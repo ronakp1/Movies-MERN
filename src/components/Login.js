@@ -1,85 +1,75 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { useLocation, Redirect } from 'react-router-dom';
+import { isAuth, login, register } from './services/AuthService';
+import styles from '../styles/LoginSignup.module.css';
+import { AuthContext } from './services/AuthContext';
 
 function Login() {
     const [formData, setFormData] = useState({ username: '', password: '' });
     const [signIn, setSignIn] = useState(false);
     const [toHomepage, setToHomepage] = useState(false);
+    const [message, setMessage] = useState(null);
     const { pathname } = useLocation();
     const counter = useRef(0);
+    const authContext = useContext(AuthContext);
     console.log("path1", pathname);
 
-    if (toHomepage === true) {
+
+    useEffect(() => {
         <Redirect to="/discover/popular" />
-    }
+    }, [toHomepage])
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
         console.log("inhere1", formData);
     }
 
-    const handleSubmit = (e) => {
-        console.log("inhere2", formData);
-        setSignIn(true);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const res = await login(formData);
+        console.log(res);
+
+        const { isAuthenticated, username } = res
+
+        if (isAuthenticated) {
+            authContext.setUser(username);
+            authContext.setIsAuthenticated(isAuthenticated);
+            setToHomepage(true);
+            setMessage("Succesfully logged in");
+            console.log("authenticated");
+        }
+        else {
+            console.log("not authenticated");
+            setMessage("Incorrect username or password");
+        }
+        // if (res.message.msgError) {
+        //     setMessage(res.message.msgBody);
+        // }
+        // if (res.message.msgError === false) {
+        //     setMessage(res.message.msgBody);
+        // }
 
     }
-    useEffect(() => {
-        const { username, password } = formData;
-        const data = {
-            username,
-            password
-        }
-
-        const hey = async () => {
-            if (counter.current < 1) {
-                // if (username.length > 0) {
-                console.log("inhere3", data);
 
 
-                const res = await fetch(pathname === '/signup' ? '/api/signup' : '/api/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
 
-                const dataArrived = await res.json();
-                counter.current++;
-                console.log("dataar", dataArrived);
-                if (dataArrived.errors) {
-                    console.log("dataar", dataArrived.errors)
-                    // <div>
-                    //     <h1>{dataArrived.errors.username}</h1>
-                    //     <h1>{dataArrived.errors.password}</h1>
-                    // </div>
-                }
-                if (dataArrived.user) {
-                    // counter.current = 0;
-                    console.log("user is signed in");
-                    setToHomepage(true);
-                }
-            }
-            // }
-        }
 
-        hey();
-
-    }, [signIn === true]);
     return (
         <div>
-            <h1>Sign Up</h1>
-            <form action="" method="POST">
+            <h1>LOG IN</h1>
+            {/* <form action="" method="POST"> */}
+            <form onSubmit={handleSubmit} >
                 <label for="username">Username</label>
                 <input name="username" placeholder="username" type="text" onChange={handleChange} />
                 <label for="password">Password</label>
                 <input name="password" type="password" onChange={handleChange} />
 
-                {pathname === '/signup' ? <button onClick={handleSubmit}>Sign Up</button>
+                {/* {pathname === '/signup' ? <button onClick={handleSubmit}>Sign Up</button>
                     : <button onClick={handleSubmit}>Log in</button>
-                }
-
-
+                } */}
+                <button onClick={handleSubmit}>Login</button>
+                {message ? <div className={styles.message}>{message}</div> : null}
 
             </form>
         </div>

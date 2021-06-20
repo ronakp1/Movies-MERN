@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import NavBarLinks from './NavBarLinks';
 import styles from '../styles/navBar.module.css';
 import { getGenres } from '../apicalls/Connect';
@@ -6,11 +6,24 @@ import upcoming from '../svg/upcoming.svg';
 import popular from '../svg/popularity.svg';
 import topRated from '../svg/bar-chart.svg';
 import { Link } from "react-router-dom";
-
+import AuthService, { isAuth, logout } from './services/AuthService';
+import { AuthContext } from './services/AuthContext';
+import FavouritesList from './FavouritesList';
+import { react } from '@babel/types';
 
 const NavBar = ({ showMenu }) => {
     const [genreList, setGenreList] = useState([]);
+    const {isAuthenticated,user,setIsAuthenticated,setUser} = useContext(AuthContext);
+    // const authContext = useContext(AuthContext);
 
+    
+    const logoutHandler = async (e) => {
+        const res = await logout();
+        if (res.success) {
+            setUser(res.user);
+            setIsAuthenticated(false);
+        }
+    }
     useEffect(() => {
         let isUnmount = false;
 
@@ -60,8 +73,17 @@ const NavBar = ({ showMenu }) => {
                     </div>
                 </div>
             </div>
-            <Link className={` ${styles.dropbtn}`} to="/signup">Signup</Link>
-            <Link className={` ${styles.dropbtn}`} to="/login">Login</Link>
+            {isAuthenticated ?
+                // <Link className={` ${styles.dropbtn}`} to="/logout">Logout</Link>
+                <React.Fragment>
+                    <Link className={` ${styles.dropbtn}`} to="/favourites">Favourites</Link>
+                    <button type="button" className={` ${styles.dropbtn}`} onClick={logoutHandler} >Logout</button></React.Fragment>
+                :
+                <React.Fragment>
+                    <Link className={` ${styles.dropbtn}`} to="/signup">Signup</Link>
+                    <Link className={` ${styles.dropbtn}`} to="/login">Login</Link></React.Fragment>
+            }
+
         </div>
     );
 

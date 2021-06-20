@@ -8,27 +8,30 @@ const cookieParser = require('cookie-parser');
 const port = 5000;
 
 
- app.use(express.json());
- app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
 const dbURI = process.env.MONGO_PASSWORD;
-mongoose.connect(dbURI, {useNewUrlParser:true, useUnifiedTopology:true})
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => console.log('connected to db'))
     .catch((err) => console.log(err));
 
 app.listen(port, () => {
     console.log('Listening at port');
 });
-
+const authRoutes = require('./Routes/authRoutes');
+const favouriteRoutes = require('./Routes/favouriteRoutes');
+app.use('/api', authRoutes);
+app.use('/api', favouriteRoutes);
 const discoverController = require('./Controllers/DiscoverController');
 const movieController = require('./Controllers/MovieController');
 const searchController = require('./Controllers/SearchController');
 const personController = require('./Controllers/PersonController');
 const genreController = require('./Controllers/GenreController');
-const favouriteController = require ('./Controllers/FavouriteController');
-const authRoutes = require('./Routes/authRoutes');
+// const favouriteController = require('./Controllers/FavouriteController');
+
 const { response } = require('express');
 
 
@@ -37,9 +40,10 @@ app.get(['/movie/:id', '/movie/:id?page=pageNumber'], movieController.getMovie);
 app.get(['/search/:id', '/search/:id?page=pageNumber'], searchController.getSearch);
 app.get(['/person/:id', '/person/:id?page=pageNumber'], personController.getPerson);
 app.get(['/genre/:id', '/genre/:id?page=pageNumb'], genreController.getGenre);
-app.post('/api/favourite/movie', favouriteController.getFavourite);
+// app.post('/api/favourite/movie', favouriteController.getFavourite);
 
 app.use(authRoutes);
+app.use(favouriteRoutes);
 
 // app.get('*', async (req, res) => {
 //     try {

@@ -1,27 +1,25 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
+import { addFavourite } from './services/FavouriteService';
+
 
 const FavouriteButton = (props) => {
     const [favourited, setFavourited] = useState(false);
-    useEffect(() => {
-        const {id, poster_path, original_title, vote_average, runtime, release_date} = props.movie;
-        console.log("og",original_title);
-        const data =  {
-            movieTitle: original_title,
+
+    const setFavourite = async() => {
+        const { id, poster_path, original_title, vote_average, runtime, release_date } = props.movie;
+        console.log("og", original_title);
+        const data = {
             movieId: id,
+            movieTitle: original_title,
             release_date: release_date,
             vote_average: vote_average
         }
-    fetch('/api/favourite/movie', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-            body: JSON.stringify(data)})
-    }, [favourited]);
-
+        const res = await addFavourite(data);
+        console.log(res);
+    }
     return (
         <div>
-            <button type="button" onClick={() => setFavourited(true)}>Add to Favourites</button>
+            <button type="button" onClick={() => { setFavourite }}>Add to Favourites</button>
         </div>
     )
 }

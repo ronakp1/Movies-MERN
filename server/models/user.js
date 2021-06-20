@@ -16,7 +16,8 @@ const UserSchema = new Schema({
         type: String,
         required: [true, "Please enter a password"],
         minlength: [6, 'Minimum password length is 6 characters']
-    },
+    }
+    // favourites: [{type:Schema.Types.ObjectId, ref:'Favourites'}]
 })
 
 
@@ -27,16 +28,41 @@ UserSchema.pre('save', async function (next) {
     next();
 })
 
-UserSchema.statics.login = async function (username, password) {
-    const user = await this.findOne({ username });
-    if (user) {
-        const auth = await bcrypt.compare(password, user.password);
-        if (auth) {
-            return user;
+// UserSchema.statics.login = async function (username, password) {
+//     const user = await this.findOne({ username });
+//     if (user) {
+//         const auth = await bcrypt.compare(password, user.password);
+//         if (auth) {
+//             return user;
+//         }
+//         throw Error('incorrect password');
+//     }
+//     throw Error('incorrect username');
+// }
+
+
+// UserSchema.statics.comparePasswords = function (password, cb) {
+//     bcrypt.compare(password, this.password, (err, isMatch) => {
+//         if (err)
+//             return cb(err);
+//         else {
+//             if (!isMatch)
+//                 return cb(null, isMatch);
+//             return cb(null, this);
+//         }
+//     })
+// }
+
+UserSchema.methods.comparePasswords = function(password,cb){
+    bcrypt.compare(password,this.password,(err,isMatch)=>{
+        if(err)
+            return cb(err);
+        else{
+            if(!isMatch)
+                return cb(null,isMatch);
+            return cb(null,this);
         }
-        throw Error('incorrect password');
-    }
-    throw Error('incorrect username');
+    });
 }
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

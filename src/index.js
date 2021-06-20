@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 //import NavBar from './components/NavBar';
+import AuthProvider from './components/services/AuthContext';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <AuthProvider>
     <App />
-  </React.StrictMode>,
+  </AuthProvider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );

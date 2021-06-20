@@ -13,9 +13,11 @@ import Genres from './components/Genres';
 import RealPagination from './components/RealPagination';
 import Discover from './components/Discover';
 import Search from './components/Search';
+import Signup from './components/Signup';
 import Login from './components/Login';
 import Error from './components/Error';
 import { MyContext } from './components/GenreFilters';
+import FavouritesList from './components/FavouritesList';
 
 const App = () => {
     return (
@@ -29,8 +31,10 @@ const App = () => {
                             <Redirect to="/discover/popular" />
                         </Route>
 
-                        <Route path='/signup' exact component={Login} />
+                        <Route path='/signup' exact component={Signup} />
                         <Route path='/login' exact component={Login} />
+
+                        <Route path='/favourites' exact component={FavouritesList} />
                         <Route path='/discover/:name?page=:pageNumb' exact component={Discover} />
 
                         <Route path='/discover/:name' exact component={Discover} />

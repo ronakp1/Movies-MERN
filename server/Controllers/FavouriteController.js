@@ -1,15 +1,12 @@
 const Favourite = require('../models/favouritesList');
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const passportConfig = require('../passport');
 
-module.exports.getFavourite = (req, res) => {
-    console.log(req.body);
-    const data = req.body;
-    // addFavourite(data);
+const post_favourites = (req, res) => {
+
 }
-
-// const addFavourite = async (data) => {
-//     try {
-//         const favourite = await Favourite.insert(data)
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
+module.exports = {
+    post_favourites
+}
