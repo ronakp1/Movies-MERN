@@ -16,8 +16,8 @@ const UserSchema = new Schema({
         type: String,
         required: [true, "Please enter a password"],
         minlength: [6, 'Minimum password length is 6 characters']
-    }
-    // favourites: [{type:Schema.Types.ObjectId, ref:'Favourites'}]
+    },
+    // favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'favourites' }]
 })
 
 
@@ -53,14 +53,14 @@ UserSchema.pre('save', async function (next) {
 //     })
 // }
 
-UserSchema.methods.comparePasswords = function(password,cb){
-    bcrypt.compare(password,this.password,(err,isMatch)=>{
-        if(err)
+UserSchema.methods.comparePasswords = function (password, cb) {
+    bcrypt.compare(password, this.password, (err, isMatch) => {
+        if (err)
             return cb(err);
-        else{
-            if(!isMatch)
-                return cb(null,isMatch);
-            return cb(null,this);
+        else {
+            if (!isMatch)
+                return cb(null, isMatch);
+            return cb(null, this);
         }
     });
 }

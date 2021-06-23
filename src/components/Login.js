@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
-import { useLocation, Redirect } from 'react-router-dom';
+import { useLocation, Redirect, useHistory } from 'react-router-dom';
 import { isAuth, login, register } from './services/AuthService';
 import styles from '../styles/LoginSignup.module.css';
 import { AuthContext } from './services/AuthContext';
@@ -13,7 +13,7 @@ function Login() {
     const counter = useRef(0);
     const authContext = useContext(AuthContext);
     console.log("path1", pathname);
-
+   let history = useHistory();
 
     useEffect(() => {
         <Redirect to="/discover/popular" />
@@ -38,6 +38,7 @@ function Login() {
             setToHomepage(true);
             setMessage("Succesfully logged in");
             console.log("authenticated");
+            history.push('/');
         }
         else {
             console.log("not authenticated");

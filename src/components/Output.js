@@ -14,13 +14,13 @@ const Output = (props) => {
     const [similar, setSimilar] = useState(['']);
     const [genreTitle, setGenreTitle] = useState('');
     let location = useLocation();
-
+    console.log("kanye", props);
     useEffect(() => {
         if (props.length < 2) {
             return;
         }
         const hey = location.pathname;
-
+        console.log("kanye", props);
         if ((hey.includes("person"))) {
 
             setSimilar("person");
@@ -64,7 +64,14 @@ const Output = (props) => {
             setCurrentMovies(props.discoverList);
 
         }
+        if (hey.includes("favourites")) {
+            setSimilar("favourites");
+            if (props.favouriteMovies !== undefined) {
+                setCurrentMovies(props.favouriteMovies.favourites);
+                console.log("kanye3", props.favouriteMovies.favourites);
+            }
 
+        }
 
     }, [props])
 
@@ -80,21 +87,23 @@ const Output = (props) => {
                     {similar === "movie" ? <h1>Reccomended Films</h1>
                         : similar === "person" ? <h1>Has starred in</h1>
                             : similar === "genre" ? <GenreFilters changeValue={props.changeValue} title={genreTitle} />
-                                
-                                : similar === "search" ? <h1>{genreTitle}</h1>
-                                    : <h1>{`${removeSlash(location.pathname)} Films`}</h1>
+                                : similar === "favourites" ? <h1>Favourites</h1>
+                                    : similar === "search" ? <h1>{genreTitle}</h1>
+                                        : <h1>{`${removeSlash(location.pathname)} Films`}</h1>
                     }
 
 
                 </div>
                 <div className={styles.moviesContainer}>
                     {currentMovies !== undefined &&
-                        currentMovies.map((c) => (
+                        currentMovies.map((c, index) => (
                             <MovieCard
                                 title={c.title}
                                 poster={c.poster_path}
                                 vote_average={c.vote_average}
                                 id={c.id}
+                                movieId={c.movieId}
+                                key={index}
                             />
                         ))
                     }

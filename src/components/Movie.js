@@ -37,6 +37,7 @@ const Movie = () => {
     if (pageNumb === undefined || pageNumb === null) {
         pageNumb = 1;
     }
+    console.log("responseinside", id);
 
     useEffect(() => {
         const fetchData = async () => {

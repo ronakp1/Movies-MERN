@@ -96,10 +96,10 @@ const getMovie = async ({ id }) => {
         // console.log("from connect", data);
         // return data;
         let response = await fetch(`/movie/${id}`);
-        console.log("response", response);
+        console.log("response1", response);
         // response = await fetch(`/movie/${filter}?page=${pageNumber}`);
         const data = await response.json();
-        console.log("response", data);
+        console.log("response2", data);
         // console.log("server1", response);
         // const data = await JSON.parse(response);
         // console.log("server2", data);

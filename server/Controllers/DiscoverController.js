@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
  const API_KEY = process.env.REACT_APP_API_KEY;
 
 const getDiscover = async(req, res) => {
-    console.log("api", API_KEY);
     let filterTerm = req.params.id;
     if (filterTerm.includes("rated")) filterTerm = "top_rated";
     console.log(filterTerm)
