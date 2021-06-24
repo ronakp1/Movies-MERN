@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import styles from '../styles/navBar.module.css';
+// import styles from '../styles/navBar.module.css';
+import styles from '../../styles/navBar.module.css'
 import { FaRegPlayCircle } from 'react-icons/fa';
 function NavBarLinks({ itemValue, id, pic }) {
     if (itemValue === "popular" || itemValue === "top rated" || itemValue === "upcoming") {

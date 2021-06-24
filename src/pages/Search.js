@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
-import Output from './Output';
+import Output from '../components/Output';
 import { getSearch } from '../apicalls/Connect';
 import { useParams, useLocation } from "react-router-dom";
-import { MovieContext } from './MovieContext';
+import { MovieContext } from '../components/services/MovieContext';
 
 function Search(props) {
     const [searchState, setSearchState] = useState('');

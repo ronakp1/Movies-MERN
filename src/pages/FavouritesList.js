@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-
-import { getFavourites } from './services/FavouriteService';
-import Output from './Output';
-import Loading from './Loading';
+import {useLocation} from 'react-router-dom';
+import { getFavourites } from '../components/services/FavouriteService';
+import Output from '../components/Output';
+import Loading from '../components/Loading';
 function FavouritesList() {
     const [favouriteMovies, setFavouriteMovies] = useState([]);
     const [loading, setLoading] = useState(true);
+    const {pathname} = useLocation();
     useEffect(() => {
         const hey = async () => {
             const res = await getFavourites();
@@ -15,7 +16,7 @@ function FavouritesList() {
             setLoading(false);
         }
         hey();
-    }, []);
+    }, [pathname.includes('favourites')]);
 
     return (
         <React.Fragment>

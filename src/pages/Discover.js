@@ -1,9 +1,9 @@
 import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
 import { getDiscoverCategories } from '../apicalls/Connect';
 import { useParams, useHistory, useLocation, Link } from "react-router-dom";
-import Output from './Output';
-import Loading from './Loading';
-import { MovieContext } from './MovieContext';
+import Output from '../components/Output';
+import Loading from '../components/Loading';
+import { MovieContext } from '../components/services/MovieContext';
 
 const Discover = () => {
     const { pageNumber, setPageNumber } = useContext(MovieContext);

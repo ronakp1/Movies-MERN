@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, Redirect } from 'react-router-dom';
-import { login, register } from './services/AuthService';
+import { login, register } from '../components/services/AuthService';
 import styles from '../styles/LoginSignup.module.css';
 function Signup() {
     const [formData, setFormData] = useState({ username: '', password: '' });

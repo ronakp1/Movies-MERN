@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import { useLocation, Redirect, useHistory } from 'react-router-dom';
-import { isAuth, login, register } from './services/AuthService';
+import { isAuth, login, register } from '../components/services/AuthService';
 import styles from '../styles/LoginSignup.module.css';
-import { AuthContext } from './services/AuthContext';
+import { AuthContext } from '../components/services/AuthContext';
 
 function Login() {
     const [formData, setFormData] = useState({ username: '', password: '' });

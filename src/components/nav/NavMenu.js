@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar';
 import NavSearch from './NavSearch';
-import styles from '../styles/navBar.module.css';
+// import styles from '../styles/navBar.module.css';
+// import styles from '../../NavBar.module.css'
+import styles from '../../styles/navBar.module.css';
 const NavMenu = () => {
     const [showMenu, setShowMenu] = useState(false);
 

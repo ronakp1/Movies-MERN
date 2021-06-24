@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import NavBarLinks from './NavBarLinks';
-import styles from '../styles/navBar.module.css';
-import { getGenres } from '../apicalls/Connect';
-import upcoming from '../svg/upcoming.svg';
-import popular from '../svg/popularity.svg';
-import topRated from '../svg/bar-chart.svg';
+import styles from '../../styles/navBar.module.css';
+import { getGenres } from '../../apicalls/Connect';
+import upcoming from '../../svg/upcoming.svg';
+import popular from '../../svg/popularity.svg';
+import topRated from '../../svg/bar-chart.svg';
 import { Link, useHistory } from "react-router-dom";
-import AuthService, { isAuth, logout } from './services/AuthService';
-import { AuthContext } from './services/AuthContext';
-import FavouritesList from './FavouritesList';
+import AuthService, { isAuth, logout } from '../services/AuthService';
+import { AuthContext } from '../services/AuthContext';
+import FavouritesList from '../../pages/FavouritesList';
 import { react } from '@babel/types';
 
 const NavBar = ({ showMenu }) => {

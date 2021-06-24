@@ -1,4 +1,4 @@
-import FavouritesList from "components/FavouritesList";
+import FavouritesList from "pages/FavouritesList";
 
 const addFavourite = async (favourite) => {
     console.log("hey2", favourite);
@@ -41,6 +41,8 @@ const removeFavourite = async (favourite) => {
     console.log("hey2", data);
     return data;
 }
+
+
 
 const getFavourites = async () => {
     const userId = 2;

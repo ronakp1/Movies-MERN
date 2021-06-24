@@ -3,11 +3,12 @@ import { getMovie, getCredits, getRecommendedMovies, getMovieVideo } from '../ap
 import { useParams, useHistory, useLocation, Link } from "react-router-dom";
 
 
-import Credits from './Credits';
-import Output from './Output';
+import Credits from '../components/Credits';
+import Output from '../components/Output';
 import Loading from '../components/Loading';
-import Likes from './Likes';
-import FavouritesButton from './FavouriteButton';
+import Likes from '../components/Likes';
+import FavouritesButton from '../components/FavouriteButton';
+import Comments from "components/Comments";
 
 import styles from '../styles/movie.module.css';
 import star from '../svg/star.svg';
@@ -126,10 +127,10 @@ const Movie = () => {
                             <button className={`${styles.clickables} ${styles.backBtn}`} onClick={() => history.push("/")}><FaBackward className={styles.svgicon} /> Back </button>
                         </div>
                     </div>
-
+ <Comments movie={movie}/>
                 </div>
             }
-
+           
             {loading ? '' : <Output recomendedMovies={recomendedMovies} />}
 
         </div >

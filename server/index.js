@@ -23,6 +23,8 @@ app.listen(port, () => {
 });
 const authRoutes = require('./Routes/authRoutes');
 const favouriteRoutes = require('./Routes/favouriteRoutes');
+const commentRoutes = require('./Routes/commentRoutes');
+app.use('/api', commentRoutes);
 app.use('/api', authRoutes);
 app.use('/api', favouriteRoutes);
 const discoverController = require('./Controllers/DiscoverController');

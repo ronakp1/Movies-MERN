@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { getPerson, getPersonCredits } from '../apicalls/Connect';
 import { useParams, useHistory } from "react-router-dom";
 import styles from '../styles/movie.module.css';
-import Output from './Output';
+import Output from '../components/Output';
 import man from '../svg/man.svg';
 import woman from '../svg/woman.svg';
 

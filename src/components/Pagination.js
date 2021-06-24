@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { MovieContext } from './MovieContext';
+import { MovieContext } from './services/MovieContext';
 import { useHistory, Link, useParams, useLocation } from "react-router-dom";
 import styles from '../styles/Pagination.module.css';
 import { FaBackward, FaForward } from 'react-icons/fa';

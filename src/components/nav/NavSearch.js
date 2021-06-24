@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import styles from '../styles/navBar.module.css';
-import Output from './Output';
+import styles from '../../styles/navBar.module.css';
+import Output from '../Output';
 
 import { FaSearch } from 'react-icons/fa';
 const NavSearch = () => {

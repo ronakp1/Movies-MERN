@@ -72,7 +72,9 @@ const post_checkFavourite = (req, res) => {
 }
 
 const post_removeFavourite = async (req, res) => {
+    console.log(req.body);
     const { movieId } = req.body;
+    console.log("mo", movieId);
     Favourites.findOneAndDelete({ userId: req.user._id, movieId: movieId })
         .exec((err, doc) => {
             if (err) {

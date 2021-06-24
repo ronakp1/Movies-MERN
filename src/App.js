@@ -1,23 +1,23 @@
 import './styles/App.css';
 //import React, { useState, useEffect, createContext } from 'react';
-import { MovieState } from './components/MovieContext';
-import NavMenu from './components/NavMenu';
+import { MovieState } from './components/services/MovieContext';
+import NavMenu from './components/nav/NavMenu';
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Output from './components/Output';
 
-import Movie from './components/Movie';
+import Movie from './pages/Movie';
 // import GetGenreList from 'apicalls/GetGenreList';
-import Person from './components/Person';
-import Genres from './components/Genres';
+import Person from './pages/Person';
+import Genres from './pages/Genres';
 import RealPagination from './components/RealPagination';
-import Discover from './components/Discover';
-import Search from './components/Search';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import Discover from './pages/Discover';
+import Search from './pages/Search';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 import Error from './components/Error';
 import { MyContext } from './components/GenreFilters';
-import FavouritesList from './components/FavouritesList';
+import FavouritesList from './pages/FavouritesList';
 
 const App = () => {
     return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { getGenre } from '../apicalls/Connect';
 import { useParams, useHistory, useLocation, Link } from "react-router-dom";
-import Output from './Output';
-import { MovieContext } from './MovieContext';
+import Output from '../components/Output';
+import { MovieContext } from '../components/services/MovieContext';
 // import { MyContext } from './GenreFilters';
 
 const Genres = () => {
