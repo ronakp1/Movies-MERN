@@ -17,7 +17,7 @@ const Discover = () => {
 
     const searchParams = new URLSearchParams(search);
     let pageNumb = searchParams.get('page');
-    console.log("IDis", name, pageNumb, search);
+    // console.log("IDis", name, pageNumb, search);
 
     if (pageNumb === undefined || pageNumb === null) {
         pageNumb = 1;
@@ -37,10 +37,10 @@ const Discover = () => {
         }
         const fetchData = async () => {
             linkRef.current = name;
-            console.log("linkref", linkRef);
+            // console.log("linkref", linkRef);
 
             if (!isUnmount) {
-                console.log("name", name);
+                // console.log("name", name);
                 const result = await getDiscoverCategories(name, pageNumb);
                 setMovieList(result);
                 setLoading(false);

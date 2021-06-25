@@ -16,7 +16,7 @@ const FavouriteButton = (props) => {
     useEffect(() => {
         const hey = async () => {
             const res = await checkFavourite(data);
-            console.log("check", res);
+            // console.log("check", res);
 
             if (res.authenticated)
                 setFavourited(true)
@@ -30,15 +30,15 @@ const FavouriteButton = (props) => {
     }, [favourited]);
 
     const setFavourite = async () => {
-        console.log("og", original_title);
+        // console.log("og", original_title);
 
         if (favourited) {
             const res = await removeFavourite(data);
-            console.log("hey3", res);
+            // console.log("hey3", res);
             setFavourited(false);
         } else {
             const res = await addFavourite(data);
-            console.log("hey3", res);
+            // console.log("hey3", res);
             setFavourited(true);
         }
     }

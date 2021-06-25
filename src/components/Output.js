@@ -14,19 +14,19 @@ const Output = (props) => {
     const [similar, setSimilar] = useState(['']);
     const [genreTitle, setGenreTitle] = useState('');
     let location = useLocation();
-    console.log("kanye", props);
+    // console.log("kanye", props);
     useEffect(() => {
         if (props.length < 2) {
             return;
         }
         const hey = location.pathname;
-        console.log("kanye", props);
+        // console.log("kanye", props);
         if ((hey.includes("person"))) {
 
             setSimilar("person");
             if (props.personCredits !== undefined) {
-                console.log("credit", props.personCredits);
-                console.log("credit", props.personCredits.cast);
+                // console.log("credit", props.personCredits);
+                // console.log("credit", props.personCredits.cast);
                 setCurrentMovies(props.personCredits.cast);
             }
         }
@@ -68,7 +68,7 @@ const Output = (props) => {
             setSimilar("favourites");
             if (props.favouriteMovies !== undefined) {
                 setCurrentMovies(props.favouriteMovies.favourites);
-                console.log("kanye3", props.favouriteMovies.favourites);
+                // console.log("kanye3", props.favouriteMovies.favourites);
             }
 
         }

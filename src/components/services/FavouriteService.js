@@ -15,7 +15,7 @@ const addFavourite = async (favourite) => {
 }
 
 const checkFavourite = async (favourite) => {
-    console.log("hey2", favourite);
+    // console.log("hey2", favourite);
     const res = await fetch('/api/favourite/favourited', {
         method: 'POST',
         headers: {
@@ -24,7 +24,7 @@ const checkFavourite = async (favourite) => {
         body: JSON.stringify(favourite)
     })
     const data = await res.json();
-    console.log("hey2", data);
+    // console.log("hey2", data);
     return data;
 }
 

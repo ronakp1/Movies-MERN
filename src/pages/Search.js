@@ -12,18 +12,18 @@ function Search(props) {
     const { pageNumber, setPageNumber, searchPagination, setSearchPagination } = useContext(MovieContext);
     const [oldSearch, setOldSearch] = useState('');
     const refSearch = useRef('');
-    console.log("searchin3", props);
+    // console.log("searchin3", props);
 
 
     const { query } = useParams();
 
     let location = useLocation();
     const search = location.search;
-    console.log("loc11", search);
+    // console.log("loc11", search);
     const searchParams = new URLSearchParams(search);
     // console.log("searchp", searchParams);
     let pageNumb = searchParams.get('page');
-    console.log("IDis", query, pageNumb);
+    // console.log("IDis", query, pageNumb);
 
     if (pageNumb === undefined || pageNumb === null) {
         pageNumb = 1;

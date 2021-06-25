@@ -33,7 +33,7 @@ const NavBar = ({ showMenu }) => {
 
             if (!isUnmount) {
                 const result = await getGenres();
-                console.log("response", result)
+                // console.log("response", result)
                 setGenreList(result);
             }
         }

@@ -9,7 +9,7 @@ function Signup() {
     const [message, setMessage] = useState(null);
     const { pathname } = useLocation();
     const counter = useRef(0);
-    console.log("path1", pathname);
+    // console.log("path1", pathname);
 
     if (toHomepage === true) {
         <Redirect to="/discover/popular" />
@@ -17,14 +17,14 @@ function Signup() {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
-        console.log("inhere1", formData);
+        // console.log("inhere1", formData);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const res = await register(formData);
-        console.log(res);
+        // console.log(res);
         if (res.message.msgError) {
             setMessage(res.message.msgBody);
         }

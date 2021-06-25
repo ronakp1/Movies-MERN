@@ -36,7 +36,7 @@ const getGenres = async () => {
 
         const response = await fetch('*');
         const data = await response.json();
-        console.log("server11", data);
+        // console.log("server11", data);
         return data.genres;
     } catch (err) {
         console.log(err);
@@ -48,7 +48,7 @@ const getDiscoverCategories = async (filter, pageNumber) => {
     response = await fetch(`/discover/${filter}?page=${pageNumber}`);
     const data = await response.json();
 
-    console.log("server22", data);
+    // console.log("server22", data);
     return data.results;
     // if(filter.includes("rated")) filter = "top_rated";
     // const filterTerm = discoverLookup[filter];
@@ -96,10 +96,10 @@ const getMovie = async ({ id }) => {
         // console.log("from connect", data);
         // return data;
         let response = await fetch(`/movie/${id}`);
-        console.log("response1", response);
+        // console.log("response1", response);
         // response = await fetch(`/movie/${filter}?page=${pageNumber}`);
         const data = await response.json();
-        console.log("response2", data);
+        // console.log("response2", data);
         // console.log("server1", response);
         // const data = await JSON.parse(response);
         // console.log("server2", data);
@@ -206,10 +206,10 @@ const getPerson = async ({ id }) => {
         // const data = await response.json();
         // console.log("from connect", data);
         let response = await fetch(`/person/${id}`);
-        console.log("response", response);
+        // console.log("response", response);
         // response = await fetch(`/movie/${filter}?page=${pageNumber}`);
         const data = await response.json();
-        console.log("response", data);
+        // console.log("response", data);
         return data;
     } catch (err) {
         console.log(err);

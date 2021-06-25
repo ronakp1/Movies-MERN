@@ -8,20 +8,20 @@ const NavSearch = () => {
     const [searchState, setSearchState] = useState('');
 
     const handleChange = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         setSearchState(event.target.value);
-        console.log(searchState);
+        // console.log(searchState);
     }
 
     const handleKeyPress = (e) => {
         if (e.target.charCode === 13) {
-            console.log("pressed"); 
+            // console.log("pressed"); 
             setStat(searchState);
         }
     }
 
     const setStat = (val) => {
-        console.log("searchstate", searchState);
+        // console.log("searchstate", searchState);
         <Output searchString={val} />
         setSearchState('');
 

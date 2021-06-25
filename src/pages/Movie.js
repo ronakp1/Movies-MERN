@@ -9,6 +9,7 @@ import Loading from '../components/Loading';
 import Likes from '../components/Likes';
 import FavouritesButton from '../components/FavouriteButton';
 import Comments from "components/Comments";
+import { getComments } from "components/services/CommentService";
 
 import styles from '../styles/movie.module.css';
 import star from '../svg/star.svg';
@@ -25,6 +26,8 @@ const Movie = () => {
     const movieContainer = useRef([]);
     const [recomendedMovies, setRecomendedMovies] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [comments, setComments] = useState([]);
+
     const URL = `https://image.tmdb.org/t/p/w500`;
     let { id } = useParams();
     let history = useHistory();
@@ -38,14 +41,14 @@ const Movie = () => {
     if (pageNumb === undefined || pageNumb === null) {
         pageNumb = 1;
     }
-    console.log("responseinside", id);
+    // console.log("responseinside", id);
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             // setMovie(await getMovie({ id }));
-            movieContainer.current = await getMovie({id});
-            console.log("response1", movieContainer);
+            movieContainer.current = await getMovie({ id });
+            // console.log("response1", movieContainer);
             setMovie(movieContainer.current[0]);
             // setCredits(await getCredits({ id }));
             setCredits(movieContainer.current[1]);
@@ -59,6 +62,33 @@ const Movie = () => {
         fetchData();
     }, [id, pageNumb])
 
+
+    useEffect(() => {
+
+        const getCommentss = async () => {
+            // if (!loading) {
+            console.log("movieid", movie.id);
+            const data = {
+                movieId: movie.id
+            }
+            if (movie.id !== undefined) {
+                const res = await getComments(data);
+                console.log("commentsa", res);
+
+                if (res !== undefined) {
+                    setComments(res.comments);
+                    console.log("now", comments);
+                }
+            }
+
+
+            console.log("now", comments);
+            // }
+        }
+
+        getCommentss();
+    }, [movie.length !== 0])
+
     { loading ? document.title = 'loading' : document.title = `${movie.original_title} - Movie Library` };
 
 
@@ -68,7 +98,12 @@ const Movie = () => {
 
     // const splitDate = release_date.split("-");
     // console.log("date", splitDate);
-
+    const updateComment = (newComment) => {
+        // setComments(comments.concat(newComment));
+        // console.log("newcomment", newComment);
+        setComments(comments => [...comments, newComment]);
+        console.log("currentocm", comments);
+    }
     return (
         <div className={styles.movieWrapper}>
             {loading ? <Loading /> :
@@ -127,10 +162,10 @@ const Movie = () => {
                             <button className={`${styles.clickables} ${styles.backBtn}`} onClick={() => history.push("/")}><FaBackward className={styles.svgicon} /> Back </button>
                         </div>
                     </div>
- <Comments movie={movie}/>
+                    <Comments comments={comments} movieId={movie.id} refreshFunction={updateComment} />
                 </div>
             }
-           
+
             {loading ? '' : <Output recomendedMovies={recomendedMovies} />}
 
         </div >

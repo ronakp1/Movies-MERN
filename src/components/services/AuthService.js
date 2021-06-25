@@ -9,7 +9,7 @@ const login = async (user) => {
     })
 
     //  const data = await res.json();
-    console.log("login", res);
+    // console.log("login", res);
     if(res.status !== 401) {
         return res.json();
     } else {
@@ -32,12 +32,12 @@ const register = async (user) => {
     })
 
     const data = await res.json();
-    console.log("dataar", data);
+    // console.log("dataar", data);
     if (data.errors) {
         console.log("dataar", data.errors)
     }
     if (data.user) {
-        console.log("user is signed in");
+        // console.log("user is signed in");
         // setToHomepage(true);
     }
     return data;

@@ -3,9 +3,9 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const getMovie = async(req, res) => {
     const movieID = req.params.id;
-    console.log("movieID", movieID);
+    // console.log("movieID", movieID);
     let pageNumber = 1;
-    console.log(pageNumber);
+    // console.log(pageNumber);
     if (req.query.page !== undefined) { pageNumber = req.query.page; console.log("hey", req.query.page) }
     try {
         const response1 = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US`);

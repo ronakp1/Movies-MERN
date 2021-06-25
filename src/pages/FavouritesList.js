@@ -10,9 +10,9 @@ function FavouritesList() {
     useEffect(() => {
         const hey = async () => {
             const res = await getFavourites();
-            console.log(res)
+            // console.log(res)
             setFavouriteMovies(res);
-            console.log(favouriteMovies);
+            // console.log(favouriteMovies);
             setLoading(false);
         }
         hey();

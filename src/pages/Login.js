@@ -12,7 +12,7 @@ function Login() {
     const { pathname } = useLocation();
     const counter = useRef(0);
     const authContext = useContext(AuthContext);
-    console.log("path1", pathname);
+    // console.log("path1", pathname);
    let history = useHistory();
 
     useEffect(() => {
@@ -21,14 +21,14 @@ function Login() {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
-        console.log("inhere1", formData);
+        // console.log("inhere1", formData);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const res = await login(formData);
-        console.log(res);
+        // console.log(res);
 
         const { isAuthenticated, username } = res
 
@@ -37,11 +37,11 @@ function Login() {
             authContext.setIsAuthenticated(isAuthenticated);
             setToHomepage(true);
             setMessage("Succesfully logged in");
-            console.log("authenticated");
+            // console.log("authenticated");
             history.push('/');
         }
         else {
-            console.log("not authenticated");
+            // console.log("not authenticated");
             setMessage("Incorrect username or password");
         }
         // if (res.message.msgError) {
