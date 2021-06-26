@@ -157,15 +157,18 @@ const Movie = () => {
                             {video[0] &&
                                 <a className={styles.clickables} href={`https://youtube.com/watch?v=${video[0].key}`} target="_blank" rel="noopener noreferrer"><FaPlayCircle className={styles.svgicon} />Watch Trailer</a>
                             }
-                            <Likes />
-                            <FavouritesButton movie={movie} />
+                            {/* <Likes /> */}
+                            <FavouritesButton className={styles.clickables} movie={movie} />
                             <button className={`${styles.clickables} ${styles.backBtn}`} onClick={() => history.push("/")}><FaBackward className={styles.svgicon} /> Back </button>
                         </div>
                     </div>
-                    <Comments comments={comments} movieId={movie.id} refreshFunction={updateComment} />
-                </div>
-            }
 
+                </div>
+
+            }
+            <React.Fragment>
+                <Comments comments={comments} movieId={movie.id} refreshFunction={updateComment} />
+            </React.Fragment>
             {loading ? '' : <Output recomendedMovies={recomendedMovies} />}
 
         </div >

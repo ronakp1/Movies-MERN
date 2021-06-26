@@ -23,25 +23,25 @@ const discoverLookup = {
 //     }
 // }
 
-const getGenres = async () => {
-    try {
-        // const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-        // const data = await response.json();
-        // console.log("GENRE", data.genres);
-        // return data.genres;
-        // const response = await fetch('/a');
-        // const data = await response.json();
-        // console.log("response3", data);
-        // return data.genres;
+// const getGenres = async () => {
+//     try {
+//         // const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+//         // const data = await response.json();
+//         // console.log("GENRE", data.genres);
+//         // return data.genres;
+//         // const response = await fetch('/a');
+//         // const data = await response.json();
+//         // console.log("response3", data);
+//         // return data.genres;
 
-        const response = await fetch('*');
-        const data = await response.json();
-        // console.log("server11", data);
-        return data.genres;
-    } catch (err) {
-        console.log(err);
-    }
-}
+//         const response = await fetch('*');
+//         const data = await response.json();
+//         // console.log("server11", data);
+//         return data.genres;
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
 
 const getDiscoverCategories = async (filter, pageNumber) => {
     let response = await fetch(`/discover/${filter}`);
@@ -152,25 +152,25 @@ const getMovieVideo = async ({ id }) => {
     }
 }
 
-// const getGenres = async () => {
-//     try {
-//         // const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-//         // const data = await response.json();
-//         // console.log("GENRE", data.genres);
-//         // return data.genres;
-//         // const response = await fetch('/a');
-//         // const data = await response.json();
-//         // console.log("response3", data);
-//         // return data.genres;
+const getGenres = async () => {
+    try {
+        // const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+        // const data = await response.json();
+        // console.log("GENRE", data.genres);
+        // return data.genres;
+        // const response = await fetch('/a');
+        // const data = await response.json();
+        // console.log("response3", data);
+        // return data.genres;
 
-//         const response = await fetch('*');
-//         const data = await response.json();
-//         console.log("server11", data);
-//         return data.genres;
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
+        const response = await fetch('/api/getGenres');
+        const data = await response.json();
+        console.log("server11", data);
+        return data.genres;
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 
 const filterLookup = {

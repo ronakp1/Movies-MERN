@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, Redirect } from 'react-router-dom';
 import { login, register } from '../components/services/AuthService';
 import styles from '../styles/LoginSignup.module.css';
+
 function Signup() {
     const [formData, setFormData] = useState({ username: '', password: '' });
     const [signIn, setSignIn] = useState(false);
@@ -38,22 +39,27 @@ function Signup() {
 
 
     return (
-        <div>
-            <h1>Sign Up</h1>
-            {/* <form action="" method="POST"> */}
-            <form onSubmit={handleSubmit} >
-                <label for="username">Username</label>
-                <input name="username" placeholder="username" type="text" onChange={handleChange} />
-                <label for="password">Password</label>
-                <input name="password" type="password" onChange={handleChange} />
-
-                {/* {pathname === '/signup' ? <button onClick={handleSubmit}>Sign Up</button>
+        <div className={styles.containerHold}>
+            <div className={styles.container}>
+                <h1>Sign Up</h1>
+                {/* <form action="" method="POST"> */}
+                <form onSubmit={handleSubmit} >
+                    <div className={styles.username}>
+                        <label for="username"> Username </label>
+                        <input name="username" placeholder="username" type="text" onChange={handleChange} />
+                    </div>
+                    <div className={styles.password}>
+                        <label for="password"> Password </label>
+                        <input name="password" type="password" onChange={handleChange} />
+                    </div>
+                    {/* {pathname === '/signup' ? <button onClick={handleSubmit}>Sign Up</button>
                     : <button onClick={handleSubmit}>Log in</button>
                 } */}
-                <button onClick={handleSubmit}>Sign Up</button>
-                {message ? <div className={styles.message}>{message}</div> : null}
+                    <button onClick={handleSubmit}> Sign Up </button>
+                    {message ? <div className={styles.message}>{message}</div> : null}
 
-            </form>
+                </form>
+            </div>
         </div>
     )
 }

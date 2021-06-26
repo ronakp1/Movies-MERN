@@ -2,6 +2,7 @@ const express = require('express');
 const fetch = require('node-fetch');
 require('dotenv').config();
 const app = express();
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -47,16 +48,16 @@ app.get(['/genre/:id', '/genre/:id?page=pageNumb'], genreController.getGenre);
 app.use(authRoutes);
 app.use(favouriteRoutes);
 
-// app.get('*', async (req, res) => {
-//     try {
-//         const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`);
-//         const data = await response.json();
-//         res.send(data);
-//         res.end();
-//     } catch (error) {
-//         console.log(error);
-//     }
-// })
+app.get('/api/getGenres', async (req, res) => {
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+        const data = await response.json();
+        res.send(data);
+        res.end();
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 
 
