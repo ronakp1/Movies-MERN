@@ -18,14 +18,12 @@ function Signup() {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
-        // console.log("inhere1", formData);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const res = await register(formData);
-        // console.log(res);
         if (res.message.msgError) {
             setMessage(res.message.msgBody);
         }

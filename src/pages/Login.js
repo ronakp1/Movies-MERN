@@ -37,24 +37,12 @@ function Login() {
             authContext.setIsAuthenticated(isAuthenticated);
             setToHomepage(true);
             setMessage("Succesfully logged in");
-            // console.log("authenticated");
             history.push('/');
         }
         else {
-            // console.log("not authenticated");
             setMessage("Incorrect username or password");
         }
-        // if (res.message.msgError) {
-        //     setMessage(res.message.msgBody);
-        // }
-        // if (res.message.msgError === false) {
-        //     setMessage(res.message.msgBody);
-        // }
-
     }
-
-
-
 
     return (
         <div className={styles.containerHold}>
