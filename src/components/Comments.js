@@ -41,7 +41,7 @@ const Comments = (props) => {
                 (!comment.respondingTo &&
                     <React.Fragment>
                         <SingleComment comment={comment} movieId={props.movie} refreshFunction={props.refreshFunction} />
-                        <ReplyComment comments={props.comments} movieId={props.movieId} parentCommentId = {comment._id} refreshFunction={props.refreshFunction}/>
+                        {/* <ReplyComment comments={props.comments} movieId={props.movieId} parentCommentId = {comment._id} refreshFunction={props.refreshFunction}/> */}
                     </React.Fragment>
                 )
             ))}
