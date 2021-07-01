@@ -13,10 +13,10 @@ import { react } from '@babel/types';
 
 const NavBar = ({ showMenu }) => {
     const [genreList, setGenreList] = useState([]);
-    const {isAuthenticated,user,setIsAuthenticated,setUser} = useContext(AuthContext);
+    const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
     // const authContext = useContext(AuthContext);
     let history = useHistory();
-    
+
     const logoutHandler = async (e) => {
         const res = await logout();
         if (res.success) {
@@ -62,7 +62,7 @@ const NavBar = ({ showMenu }) => {
             <div className={styles.dropdown}>
                 <a className={styles.dropbtn}>Genres</a>
                 <div className={`${styles.dropdownContent} ${styles.genreContent} ${completeClass}`}>
-                    <div className={styles.groupContent}>
+                    <div className={`${styles.groupContent} ${styles.genreHam}`}>
                         {/* {genreList.length > 0 &&
                             genreList.map(genre =>
                                 <NavBarLinks itemValue={genre.name} id={genre.id} key={genre.id} />)
@@ -75,14 +75,17 @@ const NavBar = ({ showMenu }) => {
                 </div>
             </div>
             {isAuthenticated ?
-                // <Link className={` ${styles.dropbtn}`} to="/logout">Logout</Link>
-                <React.Fragment>
-                    <Link className={` ${styles.dropbtn}`} to="/favourites">Favourites</Link>
-                    <button type="button" className={` ${styles.dropbtn}`} onClick={logoutHandler} >Logout</button></React.Fragment>
+                // <React.Fragment>
+                 <div className={completeClass}> 
+                    <Link className={` ${styles.dropbtn} ${styles.authButtons} `} to="/favourites">Favourites</Link>
+                    <button type="button" className={` ${styles.dropbtn} ${styles.authButtons} `} onClick={logoutHandler} >Logout</button>
+                  </div> 
+                //  </React.Fragment>
                 :
                 <React.Fragment>
                     <Link className={` ${styles.dropbtn}`} to="/signup">Signup</Link>
-                    <Link className={` ${styles.dropbtn}`} to="/login">Login</Link></React.Fragment>
+                    <Link className={` ${styles.dropbtn}`} to="/login">Login</Link>
+                </React.Fragment>
             }
 
         </div>

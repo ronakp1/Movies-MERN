@@ -216,13 +216,24 @@
   }
 }
 
-
+@media only screen and (max-width: 1070px) {
+  .genreContent {
+    top: 26rem !important;
+  }
+}
 @media only screen and (max-width: 1200px) {
   .navMenu {
     padding:1rem;
   }
   .dropbtn {
     display: none;
+  }
+
+  .authButtons {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    z-index:999;
   }
 
   .toggleButton {
@@ -249,15 +260,25 @@
 
   .groupContent {
     flex-direction: column;
-    padding: 7rem 3rem;
+    /* padding: 7rem 3rem; */
+    padding-top:8rem;
+    padding-left:3rem;
+    padding-right:3rem;
+    padding-bottom:0;
   }
+
+  .genreHam {
+    padding-top:0rem;
+    padding-left:3rem;
+  }
+
   .discoverContent {
     top: 0%;
     position: absolute;
     background-color: rgba(46, 64, 87, 0.95);
   }
   .genreContent {
-    top: 32rem;
+    top: 26.8rem;
   }
   .dropdownContent .test1 {
     width: auto;

@@ -6,7 +6,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 
 app.use(express.json());
@@ -59,5 +59,7 @@ app.get('/api/getGenres', async (req, res) => {
     }
 })
 
-
+// if(process.env.NODE_ENV === 'production') {
+//     app.use(express.static('client/build'))
+// }
 
